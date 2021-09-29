@@ -52,11 +52,13 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(labelText: 'Name'),
                 ),
+
                 TextField(
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   controller: _priceController,
@@ -64,9 +66,9 @@ class _HomePageState extends State<HomePage> {
                     labelText: 'Price',
                   ),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
+
+                SizedBox(height: 20),
+
                 ElevatedButton(
                   child: Text(action == 'create' ? 'Create' : 'Update'),
                   onPressed: () async {
@@ -116,6 +118,7 @@ class _HomePageState extends State<HomePage> {
         title: Text('Cadastro'),
         centerTitle: true,
       ),
+
       body: StreamBuilder(
         stream: _products.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> streamSnapshot) {
@@ -123,6 +126,7 @@ class _HomePageState extends State<HomePage> {
             return ListView.builder(
               itemCount: streamSnapshot.data!.docs.length,
               itemBuilder: (context, index) {
+                
                 final DocumentSnapshot documentSnapshot = streamSnapshot.data!.docs[index];
                 return Card(
                   margin: EdgeInsets.all(10),
@@ -136,13 +140,11 @@ class _HomePageState extends State<HomePage> {
                           // Press this button to edit a single product
                           IconButton(
                               icon: Icon(Icons.edit),
-                              onPressed: () =>
-                                  _createOrUpdate(documentSnapshot)),
+                              onPressed: () => _createOrUpdate(documentSnapshot)),
                           // This icon button is used to delete a single product
                           IconButton(
                               icon: Icon(Icons.delete),
-                              onPressed: () =>
-                                  _deleteProduct(documentSnapshot.id)),
+                              onPressed: () => _deleteProduct(documentSnapshot.id)),
                         ],
                       ),
                     ),
@@ -152,9 +154,7 @@ class _HomePageState extends State<HomePage> {
             );
           }
 
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+          return Center(child: CircularProgressIndicator());
         },
       ),
       // Add new product
