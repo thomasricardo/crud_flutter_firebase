@@ -1,5 +1,5 @@
 # crud_flutter_firebase
-A CRUD using firebase database.
+A CRUD using firebase database in Visual Studio Code.
 
 Remember to install all the necessary tools to use the Firestore properly.
 If you have some questions about it, please use the link below to see the step-by-step installation, then come back here to see the Flutter code:
